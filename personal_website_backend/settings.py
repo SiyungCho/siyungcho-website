@@ -60,7 +60,7 @@ ROOT_URLCONF = 'personal_website_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'backend/static/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,14 +128,22 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-REACT_APP_DIR = os.path.join(BASE_DIR, 'staticfiles', 'build')
+# Add this line to include your React app's build/static directory
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'backend', 'static', 'build', 'static'),
+]
+
+REACT_APP_DIR = os.path.join(BASE_DIR, 'backend/static/build')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 
 CORS_ALLOW_ALL_ORIGINS = True
-WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
