@@ -60,7 +60,7 @@ ROOT_URLCONF = 'personal_website_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'backend/static/build/static')],
+        'DIRS': [os.path.join(BASE_DIR, 'backend/static/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,6 +134,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Add this line to include your React app's build/static directory
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'backend', 'static', 'build', 'static'),
+    os.path.join(BASE_DIR, 'backend', 'static', 'build', 'images'),
 ]
 
 REACT_APP_DIR = os.path.join(BASE_DIR, 'backend/static/build')
