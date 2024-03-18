@@ -47,7 +47,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,7 +73,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'personal_website_backend.wsgi.application'
 
 ASGI_APPLICATION = 'personal_website_backend.asgi.application'
 CHANNEL_LAYERS = {
@@ -134,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-REACT_APP_DIR = os.path.join(BASE_DIR, 'staticfiles')
+REACT_APP_DIR = os.path.join(BASE_DIR, 'staticfiles', 'build')
 
 CORS_ALLOW_ALL_ORIGINS = True
 WHITENOISE_KEEP_ONLY_HASHED_FILES = True
