@@ -134,12 +134,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Add this line to include your React app's build/static directory
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'backend', 'static', 'build', 'static'),
-]
-
-REACT_APP_DIR = os.path.join(BASE_DIR, 'backend/static/build')
+REACT_APP_DIR = os.path.join(BASE_DIR, 'staticfiles')
 
 CORS_ALLOW_ALL_ORIGINS = True
 WHITENOISE_KEEP_ONLY_HASHED_FILES = True
