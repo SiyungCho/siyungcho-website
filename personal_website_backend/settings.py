@@ -60,7 +60,7 @@ ROOT_URLCONF = 'personal_website_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'backend/static/build')],
+        'DIRS': [os.path.join(BASE_DIR, 'staticfiles/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
