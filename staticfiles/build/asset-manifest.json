@@ -1,16 +1,25 @@
 {
   "files": {
     "main.css": "/static/css/main.32e70001.css",
-    "main.js": "/static/js/main.059a1680.js",
+    "main.js": "/static/js/main.78a089f7.js",
     "static/js/453.a83e8911.chunk.js": "/static/js/453.a83e8911.chunk.js",
+    "static/media/DR_Detection_Paper.pdf": "/static/media/DR_Detection_Paper.86b2a371bf0a9bc65c0c.pdf",
+    "static/media/headshot.png": "/static/media/headshot.b527bbf95b33eea3c188.png",
+    "static/media/mineral_report.pdf": "/static/media/mineral_report.9bb3112cc62ac767cd5f.pdf",
+    "static/media/retinaradar.png": "/static/media/retinaradar.157f313f5e28b2793ab5.png",
+    "static/media/storybookml.png": "/static/media/storybookml.93e9c1fc7378875e5940.png",
+    "static/media/LungCancer_report.pdf": "/static/media/LungCancer_report.bcc1d80907cc7680559f.pdf",
+    "static/media/arbbet.png": "/static/media/arbbet.5138518803413c77b7fc.png",
+    "static/media/github-logo.png": "/static/media/github-logo.b638eda5ed68b82726a2.png",
+    "static/media/www_icon.png": "/static/media/www_icon.e8ae15098a990b50194c.png",
+    "static/media/report-icon.png": "/static/media/report-icon.7c802daa1875d42f8490.png",
     "index.html": "/index.html",
-    "images/github-logo.png" : "/images/github-logo.png",
     "main.32e70001.css.map": "/static/css/main.32e70001.css.map",
-    "main.059a1680.js.map": "/static/js/main.059a1680.js.map",
+    "main.78a089f7.js.map": "/static/js/main.78a089f7.js.map",
     "453.a83e8911.chunk.js.map": "/static/js/453.a83e8911.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.32e70001.css",
-    "static/js/main.059a1680.js"
+    "static/js/main.78a089f7.js"
   ]
 }
