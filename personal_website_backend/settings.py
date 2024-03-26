@@ -25,9 +25,10 @@ SECRET_KEY = 'django-insecure-4#g*by)o+ssr&lu(8d$s!zr@3hc5-6%j2n@01btcn(h5kn%ti!
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+#DEBUG = True
 
 ALLOWED_HOSTS = ['www.siyungcho.com']
-
+#ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -75,14 +76,6 @@ TEMPLATES = [
 
 
 ASGI_APPLICATION = 'personal_website_backend.asgi.application'
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],  # Or your Redis server details
-        },
-    },
-}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

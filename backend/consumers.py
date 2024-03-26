@@ -15,13 +15,16 @@ class BackendConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data=None, bytes_data=None):
         if bytes_data:
-            # Convert the image to the required format for the model
             image = Image.open(BytesIO(bytes_data)).convert('L')  # Convert to grayscale
-            image_arr = np.array(image).reshape(1, 28, 28, 1).astype('float32') / 255.0  # Reshape to 28x28x1
-            payload = json.dumps({"instances": image_arr.tolist()})
+
+            image = image.resize((28, 28), Image.Resampling.LANCZOS)
+            img_array = np.array(image)
+            img_array = img_array.reshape(1, 28, 28, 1).astype('float32') / 255.0
+        
+            payload = json.dumps({"instances": img_array.tolist()})
 
             # URL of your TensorFlow Serving API
-            url = 'http://3.135.64.60:8501/v1/models/webmodel:predict'
+            url = 'http://3.142.235.33:8501/v1/models/webmodel:predict'
 
             # Headers for the POST request
             headers = {"Content-Type": "application/json"}
@@ -29,11 +32,13 @@ class BackendConsumer(AsyncWebsocketConsumer):
             try:
                 # Make the POST request
                 response = requests.post(url, data=payload, headers=headers)
+                print(response.json())
 
                 predictions_array = np.array(response.json()['predictions'])
                 index_of_largest = np.argmax(predictions_array)
-                labels = ['airplane', 'alarm clock', 'angel', 'ant', 'apple', 'axe', 'banana', 'bandage', 'barn', 'baseball bat', 'baseball', 'basket', 'basketball', 'bat', 'bee', 'bicycle', 'bird', 'bridge', 'butterfly', 'calculator', 'camel', 'camera', 'candle', 'car', 'carrot', 'cat', 'ceiling fan', 'chair', 'clock', 'cloud', 'compass', 'computer', 'cookie', 'crab', 'crown', 'diamond', 'dog', 'door', 'dragon', 'elephant', 'envelope', 'eye', 'fire hydrant', 'fish', 'flower', 'fork', 'giraffe', 'guitar', 'hammer', 'helicopter', 'hot air balloon', 'house', 'key', 'light bulb', 'monkey', 'mountain', 'mouth', 'octopus', 'palm tree', 'paper clip', 'pencil', 'piano', 'pineapple', 'rhinoceros', 'sandwich', 'scissors', 'shark', 'sheep', 'shoe', 'shorts', 'skateboard', 'skull', 'smiley face', 'snail', 'snowflake', 'snowman', 'soccer ball', 'sock', 'spider', 'star', 'stop sign', 'sun', 'sword', 't-shirt', 'television', 'tennis racquet', 'The Eiffel Tower', 'The Great Wall of China', 'The Mona Lisa', 'tooth', 'toothbrush', 'train', 'tree', 'windmill']
+                labels = ['apple', 'banana', 'bicycle', 'butterfly', 'camel', 'camera', 'car', 'clock', 'cloud', 'cookie', 'guitar', 'house', 'light bulb', 'octopus', 'paper clip', 'scissors', 'shoe', 'shorts', 'snowman', 'star', 'stop sign', 'sun', 't-shirt', 'television', 'tennis racquet', 'tree']
                 prediction = labels[index_of_largest]
+                print(prediction)
             except requests.exceptions.RequestException as e:
                 # Handle any exceptions that arise during the request
                 prediction = 'Error making request'
